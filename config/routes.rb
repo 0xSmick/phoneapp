@@ -1,4 +1,6 @@
 Phoneapp::Application.routes.draw do
+  resources :receipts
+
   devise_for :users
   get "welcome/index"
 
