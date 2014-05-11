@@ -1,7 +1,7 @@
 Phoneapp::Application.routes.draw do
   resources :receipts
 
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   get "welcome/index"
 
   root to: 'welcome#index'

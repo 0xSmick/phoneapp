@@ -35,6 +35,16 @@ gem 'devise'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+gem 'carrierwave'
+
+gem 'mini_magick'
+
+gem 'fog'
+
+gem 'figaro'
+
+gem 'omniauth-facebook'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

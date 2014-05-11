@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140508122137) do
+ActiveRecord::Schema.define(version: 20140510194832) do
 
   create_table "receipts", force: true do |t|
     t.datetime "date_of_transaction"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image"
   end
 
   create_table "users", force: true do |t|
@@ -33,6 +34,8 @@ ActiveRecord::Schema.define(version: 20140508122137) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

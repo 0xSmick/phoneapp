@@ -14,3 +14,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+config/application.yml
+config/initializers/fog.rb
+
+# Ignore application configuration
+/config/application.yml

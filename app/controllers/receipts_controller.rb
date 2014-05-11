@@ -12,32 +12,33 @@ class ReceiptsController < ApplicationController
   # GET /receipts/1
   # GET /receipts/1.json
   def show
+    @user = current_user
+    @receipts = @user.receipts.find(params[:id])
   end
 
   # GET /receipts/new
   def new
-    @receipt = Receipt.new
+    @user = current_user
+    @receipt = @user.receipts.new
   end
 
   # GET /receipts/1/edit
   def edit
-  end
+    @receipt = Receipt.find(params[:id])
+end
 
   # POST /receipts
   # POST /receipts.json
   def create
-    @receipt = Receipt.new(receipt_params)
+    @receipt = current_user.receipts.build(receipt_params)
 
-    respond_to do |format|
-      if @receipt.save
-        format.html { redirect_to @receipt, notice: 'Receipt was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @receipt }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @receipt.errors, status: :unprocessable_entity }
-      end
-    end
+  if @receipt.save
+      redirect_to receipts_url, notice: "Receipt was saved successfully."
+    else
+      render :new
   end
+  end
+
 
   # PATCH/PUT /receipts/1
   # PATCH/PUT /receipts/1.json
@@ -71,6 +72,7 @@ class ReceiptsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def receipt_params
-      params.require(:receipt).permit(:date_of_transaction, :user_id)
+      params.require(:receipt).permit(:date_of_transaction, :image)
     end
-end
+  end
+
